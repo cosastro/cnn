@@ -524,19 +524,19 @@ public class CNN implements Serializable {
 				layer.initKernel(frontMapNum);
 				layer.initBias(frontMapNum);
 				layer.initErros(batchSize);
-				layer.initOutmaps(batchSize);
+				layer.initOutmaps(batchSize);	// 存储输出map维度
 				break;
 			case samp:
-				layer.setOutMapNum(frontMapNum);
-				layer.setMapSize(frontLayer.getMapSize().divide(layer.getScaleSize()));
+				layer.setOutMapNum(frontMapNum);	// 上一层的输出map个数
+				layer.setMapSize(frontLayer.getMapSize().divide(layer.getScaleSize()));	// 存储当前输出map的大小
 				layer.initErros(batchSize);
 				layer.initOutmaps(batchSize);
 				break;
 			case output:
-				layer.initOutputKerkel(frontMapNum, frontLayer.getMapSize());
-				layer.initBias(frontMapNum);
-				layer.initErros(batchSize);
-				layer.initOutmaps(batchSize);
+				layer.initOutputKerkel(frontMapNum, frontLayer.getMapSize());	// 12*10*4*4
+				layer.initBias(frontMapNum);	// 12
+				layer.initErros(batchSize);	// 
+				layer.initOutmaps(batchSize);	// 10*10*1*1
 				break;
 			}
 		}
